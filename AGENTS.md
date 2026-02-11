@@ -4,11 +4,29 @@ Guidance for autonomous coding agents working in this repository.
 
 ## Project Snapshot
 
-- Stack: Astro 5 + TypeScript, with strict config via `astro/tsconfigs/strict`.
-- Runtime/tooling: Bun (`bun.lock` is present).
-- Current app shape: minimal Astro starter.
-- Main source route: `src/pages/index.astro`.
+- Stack: Astro 5 + TypeScript strict config (`astro/tsconfigs/strict`) with a React island for interactivity.
+- Runtime/tooling: Bun (`bun.lock` present).
+- App purpose: paper pattern configurator with live preview and PDF generation.
+- Main route: `src/pages/index.astro` (hydrates the configurator using `client:load`).
+- Main interactive module: `src/components/PaperConfigurator.tsx` and styles in `src/components/PaperConfigurator.css`.
 - Generated output: `dist/`.
+- Verification notes: `docs/verification/milestone-8-verification-handoff.md`.
+
+## Libraries and Technical Details
+
+Current runtime dependencies from `package.json`:
+
+- `astro` (`^5.17.1`): framework and build pipeline.
+- `@astrojs/react` (`^4.4.2`): React integration for Astro islands.
+- `react` / `react-dom` (`^19.2.4`): interactive configurator UI.
+- `jspdf` (`^4.1.0`): client-side PDF generation for Print flow.
+
+Implementation details worth preserving:
+
+- PDF generation is performed in-browser from current settings (size, orientation, color, spacing, width, padding).
+- Dot pattern is rendered in millimeter units in PDF for print fidelity.
+- Print flow attempts to open a PDF tab and invoke print, with download fallback if popup/print is blocked.
+- Form and preview synchronization are reducer-driven in `PaperConfigurator.tsx`.
 
 ## Rule Files (Cursor/Copilot)
 
@@ -24,9 +42,9 @@ If any of these files are added later, treat them as higher-priority behavioral 
 
 - Use Bun commands by default unless the user explicitly requests another toolchain.
 - Run commands from repository root.
-- Make minimal, incremental changes; avoid large refactors unless requested.
-- Do not add dependencies unless they are clearly necessary for the task.
-- Preserve starter-level simplicity unless the user asks for architecture expansion.
+- Make minimal, incremental changes; avoid broad refactors unless requested.
+- Do not add dependencies unless clearly required by scope.
+- Preserve current UX/behavior unless the user asks for changes.
 
 ## Commands
 
@@ -39,12 +57,6 @@ bun install
 bun run dev
 ```
 
-Direct Astro CLI equivalent for dev:
-
-```bash
-bun run astro dev
-```
-
 ### Build / Preview
 
 ```bash
@@ -52,117 +64,65 @@ bun run build
 bun run preview
 ```
 
-General Astro CLI passthrough:
+### Typecheck / Diagnostics
 
-```bash
-bun run astro -- --help
-```
+No dedicated lint script is configured.
 
-### Lint / Typecheck
-
-There is no dedicated lint script in `package.json` right now.
-
-Use Astro's checker for diagnostics and type-related validation:
-
-```bash
-bun run astro check
-```
-
-Use build as an additional quality gate when needed:
+Primary quality gate:
 
 ```bash
 bun run build
 ```
 
-### Tests (Single-Test Guidance Included)
+Optional Astro checker (requires packages if not already installed locally):
 
-There is no committed test framework config or test script yet, but Bun's built-in runner is available.
+```bash
+bun run astro check
+```
 
-Run all tests:
+### Tests
+
+No committed test framework config or `test` script exists yet.
+
+If adding tests with Bun runner, use:
 
 ```bash
 bun test
-```
-
-Run one test file (preferred single-test workflow):
-
-```bash
 bun test src/path/to/file.test.ts
-```
-
-Run tests by filename fragment:
-
-```bash
-bun test component-name
-```
-
-Run one named test via regex:
-
-```bash
-bun test --test-name-pattern "renders hero title"
-```
-
-Allow empty test suites (useful in early CI/scaffolding):
-
-```bash
-bun test --pass-with-no-tests
+bun test --test-name-pattern "renders preview"
 ```
 
 ## Code Style and Conventions
 
-Derived from repository config and existing source files.
-
 ### TypeScript / Strictness
 
-- Keep code compatible with strict TypeScript settings.
-- `tsconfig.json` extends `astro/tsconfigs/strict`; do not weaken this without explicit need.
-- Avoid `any`; if unavoidable, constrain and document why.
-- Prefer explicit types at public boundaries (exports, params, return types).
-- Preserve `exclude: ["dist"]` semantics.
+- Keep compatibility with strict TypeScript settings.
+- Avoid `any`; if unavoidable, constrain and justify usage.
+- Prefer explicit types at public boundaries.
 
 ### Imports / Modules
 
-- Project uses ESM (`"type": "module"`), so use `import`/`export`.
-- Do not introduce CommonJS (`require`, `module.exports`).
+- Project is ESM (`"type": "module"`), use `import`/`export` only.
 - Keep imports minimal and remove unused entries.
-- Prefer named imports where practical for readability.
 
-### Formatting
+### Formatting and Naming
 
-- Follow local file style; avoid reformatting unrelated lines.
-- Existing JS config files use semicolons and single quotes.
-- Existing `.astro` markup uses tab indentation; keep local indentation consistent.
-- Keep `.astro` frontmatter concise and deterministic.
+- Follow existing local formatting; avoid unrelated reformatting.
+- `.astro` files use tab indentation; keep consistency.
+- Use descriptive names (`camelCase` vars/functions, `PascalCase` components).
 
-### Naming
+### UI / Behavior Expectations
 
-- Use descriptive, intention-revealing names.
-- `camelCase` for variables and functions.
-- `PascalCase` for component-like entities.
-- Route files should remain lowercase/kebab-case unless Astro conventions require otherwise.
-- Avoid single-letter names except short loop indices.
-
-### Error Handling
-
-- Fail fast for invalid input in utilities and helper functions.
-- Provide actionable error messages with context.
-- Do not swallow exceptions silently.
-- In UI routes/components, prefer safe fallbacks over hard crashes when practical.
-
-### Astro-Specific Practices
-
-- Keep route components in `src/pages/`.
-- Keep static assets in `public/`.
-- Keep metadata explicit (`<title>`, viewport, icon links).
-- Favor progressive enhancement; avoid unnecessary client-side JS for static pages.
+- Keep two-panel desktop layout and stacked mobile layout behavior.
+- Maintain live preview updates on setting changes.
+- Keep print/PDF behavior resilient with user-facing fallback messaging.
 
 ## Change Scope and Safety
 
 - Do not commit generated artifacts: `dist/`, `.astro/`, `node_modules/`.
 - Respect `.gitignore` and env-file exclusions.
-- If tooling changes (lint, tests, scripts), update this file with exact commands.
-- If a test framework is added, include both full-suite and single-test commands.
+- If scripts/tooling/workflow change, update this file with exact commands and caveats.
 
 ## Maintenance Note
 
-This repository is currently a minimal Astro starter. Revisit this file whenever workflow, CI, linting, testing, or agent policy files change.
+This file reflects the current configurator + PDF workflow state. Revisit it whenever architecture, dependencies, QA workflow, or agent policy files change.
