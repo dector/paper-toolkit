@@ -21,15 +21,15 @@ This project is a simple React-based paper pattern configurator page embedded in
   - [x] Two-panel desktop layout: left preview, right form
   - [x] Mobile stacked layout with usable controls and readable preview
 
-- [ ] Define sizing/scaling rules
-  - [ ] Keep correct page proportions for A4/A3 + orientation
-  - [ ] Map mm-based settings to on-screen preview consistently
-  - [ ] Set valid ranges/minimums for numeric controls
+- [x] Define sizing/scaling rules
+  - [x] Keep correct page proportions for A4/A3 + orientation
+  - [x] Map mm-based settings to on-screen preview consistently
+  - [x] Set valid ranges/minimums for numeric controls
 
-- [ ] Define preview rendering behavior
-  - [ ] Render dot pattern inside printable area (respect padding)
-  - [ ] Apply color, width, spacing changes immediately
-  - [ ] No manual apply action; preview auto-updates on each change
+- [x] Define preview rendering behavior
+  - [x] Render dot pattern inside printable area (respect padding)
+  - [x] Apply color, width, spacing changes immediately
+  - [x] No manual apply action; preview auto-updates on each change
 
 - [ ] Define form behavior and validation
   - [ ] Control types per setting (choice/color/numeric)

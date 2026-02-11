@@ -71,21 +71,28 @@
 .preview-paper {
 	width: min(100%, 520px);
 	height: auto;
+	box-sizing: border-box;
 	border: 1px solid #c6c1b0;
 	border-radius: 0.45rem;
 	background-color: #fff;
 	box-shadow: 0 6px 16px rgba(45, 40, 20, 0.12);
-	padding: 0.75rem;
-	display: flex;
-	justify-content: space-between;
-	align-items: flex-end;
 	position: relative;
 	overflow: hidden;
 }
 
+.preview-printable-area {
+	position: absolute;
+	border: 1px dashed rgba(30, 95, 116, 0.5);
+	border-radius: 0.3rem;
+	background-position: top left;
+	pointer-events: none;
+	z-index: 1;
+}
+
 .preview-placeholder {
-	position: relative;
-	align-self: flex-start;
+	position: absolute;
+	top: 0.55rem;
+	left: 0.55rem;
 	padding: 0.3rem 0.5rem;
 	font-size: 0.8rem;
 	line-height: 1.2;
@@ -94,19 +101,13 @@
 	background: rgba(255, 255, 255, 0.84);
 	border: 1px solid rgba(90, 87, 77, 0.22);
 	border-radius: 0.35rem;
-}
-
-.preview-paper::before {
-	content: '';
-	position: absolute;
-	inset: 0;
-	background-image: radial-gradient(circle, rgba(0, 0, 0, 0.13) 1px, transparent 1.6px);
-	background-size: 14px 14px;
-	opacity: 0.45;
+	z-index: 2;
 }
 
 .preview-meta {
-	position: relative;
+	position: absolute;
+	right: 0.55rem;
+	bottom: 0.55rem;
 	display: flex;
 	flex-direction: column;
 	gap: 0.25rem;
@@ -119,6 +120,7 @@
 	border: 1px solid rgba(90, 87, 77, 0.22);
 	max-width: 100%;
 	word-break: break-word;
+	z-index: 2;
 }
 
 .controls-form {
@@ -219,7 +221,7 @@
 	}
 
 	.preview-paper {
-		padding: 0.55rem;
+		width: min(100%, 500px);
 	}
 
 	.preview-meta {
