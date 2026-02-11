@@ -1,5 +1,9 @@
 # Paper Toolkit
 
+<p align="center">
+  <img src="docs/images/paper-toolkit-screenshot.webp" alt="Paper Toolkit app screenshot" />
+</p>
+
 Paper Toolkit is an Astro + React app for generating printable paper pattern PDFs.
 It provides a live preview and in-browser PDF generation so the rendered pattern
 matches physical dimensions when printed.
