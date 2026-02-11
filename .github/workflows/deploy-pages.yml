@@ -1,24 +1,26 @@
-name: Deploy to /p/paper-toolkit
+name: Deploy to GitHub Pages
 
 on:
-  push:
-    branches:
-      - main
   workflow_dispatch:
 
 permissions:
   contents: read
+  pages: write
+  id-token: write
 
 concurrency:
-  group: deploy-paper-toolkit
+  group: pages
   cancel-in-progress: true
 
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
 
       - name: Setup Bun
         uses: oven-sh/setup-bun@v2
@@ -29,13 +31,18 @@ jobs:
       - name: Build Astro site
         run: bun run build
 
-      - name: Deploy to owner pages repo subpath
-        uses: peaceiris/actions-gh-pages@v4
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
         with:
-          personal_token: ${{ secrets.DEPLOY_TOKEN }}
-          external_repository: ${{ github.repository_owner }}/${{ github.repository_owner }}.github.io
-          publish_branch: main
-          publish_dir: ./dist
-          destination_dir: p/paper-toolkit
-          keep_files: true
-          commit_message: Deploy paper-toolkit from ${{ github.sha }}
+          path: ./dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
