@@ -1,0 +1,232 @@
+.configurator-page {
+	--page-bg: #f3f2ec;
+	--panel-bg: #ffffff;
+	--panel-border: #d8d5ca;
+	--panel-shadow: 0 8px 20px rgba(43, 42, 37, 0.08);
+	--text-main: #22211c;
+	--text-muted: #5a574d;
+	--accent: #1e5f74;
+	min-height: 100vh;
+	padding: 1rem;
+	background: linear-gradient(180deg, #efede4 0%, var(--page-bg) 45%, #ece9df 100%);
+	color: var(--text-main);
+	font-family: 'Atkinson Hyperlegible', 'Segoe UI', sans-serif;
+}
+
+.configurator-title {
+	max-width: 1100px;
+	margin: 0 auto 0.35rem;
+	font-size: clamp(1.4rem, 1.9vw + 0.9rem, 2.2rem);
+	line-height: 1.2;
+	letter-spacing: 0.01em;
+}
+
+.configurator-subtitle {
+	max-width: 1100px;
+	margin: 0 auto 1rem;
+	font-size: 0.95rem;
+	line-height: 1.4;
+	color: var(--text-muted);
+}
+
+.configurator-layout {
+	max-width: 1100px;
+	margin: 0 auto;
+	display: grid;
+	gap: 1rem;
+	grid-template-columns: 1fr;
+}
+
+.preview-panel,
+.controls-panel {
+	background: var(--panel-bg);
+	border: 1px solid var(--panel-border);
+	border-radius: 0.75rem;
+	box-shadow: var(--panel-shadow);
+	padding: 1rem;
+}
+
+.preview-panel h2,
+.controls-panel h2 {
+	margin: 0 0 0.75rem;
+	font-size: 1.15rem;
+	line-height: 1.2;
+}
+
+.preview-stage {
+	min-height: clamp(260px, 48vh, 620px);
+	display: grid;
+	place-items: center;
+	padding: 1rem;
+	border-radius: 0.6rem;
+	background: repeating-linear-gradient(
+		-45deg,
+		rgba(48, 45, 35, 0.03),
+		rgba(48, 45, 35, 0.03) 10px,
+		rgba(48, 45, 35, 0.06) 10px,
+		rgba(48, 45, 35, 0.06) 20px
+	);
+}
+
+.preview-paper {
+	width: min(100%, 520px);
+	height: auto;
+	border: 1px solid #c6c1b0;
+	border-radius: 0.45rem;
+	background-color: #fff;
+	box-shadow: 0 6px 16px rgba(45, 40, 20, 0.12);
+	padding: 0.75rem;
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-end;
+	position: relative;
+	overflow: hidden;
+}
+
+.preview-placeholder {
+	position: relative;
+	align-self: flex-start;
+	padding: 0.3rem 0.5rem;
+	font-size: 0.8rem;
+	line-height: 1.2;
+	letter-spacing: 0.02em;
+	color: #696550;
+	background: rgba(255, 255, 255, 0.84);
+	border: 1px solid rgba(90, 87, 77, 0.22);
+	border-radius: 0.35rem;
+}
+
+.preview-paper::before {
+	content: '';
+	position: absolute;
+	inset: 0;
+	background-image: radial-gradient(circle, rgba(0, 0, 0, 0.13) 1px, transparent 1.6px);
+	background-size: 14px 14px;
+	opacity: 0.45;
+}
+
+.preview-meta {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	gap: 0.25rem;
+	padding: 0.5rem 0.65rem;
+	border-radius: 0.4rem;
+	background: rgba(255, 255, 255, 0.86);
+	font-size: 0.9rem;
+	line-height: 1.25;
+	color: var(--text-muted);
+	border: 1px solid rgba(90, 87, 77, 0.22);
+	max-width: 100%;
+	word-break: break-word;
+}
+
+.controls-form {
+	display: grid;
+	grid-template-columns: 1fr;
+	gap: 0.85rem;
+}
+
+.controls-form label {
+	display: grid;
+	gap: 0.35rem;
+	font-size: 0.92rem;
+	line-height: 1.2;
+	color: var(--text-muted);
+}
+
+.controls-form input,
+.controls-form select,
+.controls-form button {
+	font: inherit;
+}
+
+.controls-form input,
+.controls-form select {
+	padding: 0.52rem 0.6rem;
+	border-radius: 0.45rem;
+	border: 1px solid #c7c2b3;
+	background: #fff;
+	color: var(--text-main);
+}
+
+.controls-form input[type='color'] {
+	padding: 0.2rem;
+	min-height: 2.25rem;
+	width: 100%;
+}
+
+.controls-form button {
+	margin-top: 0.2rem;
+	padding: 0.6rem 0.9rem;
+	border-radius: 0.45rem;
+	border: 1px solid transparent;
+	background: var(--accent);
+	color: #fff;
+	font-weight: 600;
+	cursor: pointer;
+}
+
+.controls-form button:hover {
+	background: #194f61;
+}
+
+.controls-form button:focus-visible,
+.controls-form input:focus-visible,
+.controls-form select:focus-visible {
+	outline: 2px solid #1f7f9e;
+	outline-offset: 1px;
+}
+
+.print-message {
+	margin: 0.85rem 0 0;
+	padding: 0.65rem;
+	font-size: 0.9rem;
+	border-radius: 0.45rem;
+	background: #f0f7f9;
+	color: #1d4d5c;
+	border: 1px solid #b6d6e0;
+}
+
+@media (min-width: 900px) {
+	.configurator-page {
+		padding: 1.5rem;
+	}
+
+	.configurator-subtitle {
+		margin-bottom: 1.2rem;
+	}
+
+	.configurator-layout {
+		grid-template-columns: minmax(0, 1fr) minmax(300px, 360px);
+		align-items: start;
+		gap: 1.2rem;
+	}
+
+	.controls-panel {
+		position: sticky;
+		top: 1rem;
+	}
+}
+
+@media (max-width: 520px) {
+	.configurator-page {
+		padding: 0.75rem;
+	}
+
+	.preview-stage {
+		padding: 0.65rem;
+	}
+
+	.preview-paper {
+		padding: 0.55rem;
+	}
+
+	.preview-meta {
+		font-size: 0.82rem;
+	}
+
+	.controls-form {
+		gap: 0.75rem;
+	}
+}

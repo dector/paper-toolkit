@@ -6,20 +6,20 @@ This project is a simple React-based paper pattern configurator page embedded in
 
 ## Paper Pattern Page Plan
 
-- [ ] Finalize functional scope and defaults
-  - [ ] Paper size: A4, A3
-  - [ ] Orientation: portrait, landscape
-  - [ ] Pattern color: default light gray
-  - [ ] Pattern: dots only (for now)
-  - [ ] Dot width: default 1mm
-  - [ ] Dot spacing: default 5mm
-  - [ ] Page padding: default 5mm
-  - [ ] Include Print button in configuration panel
+- [x] Finalize functional scope and defaults
+  - [x] Paper size: A4, A3
+  - [x] Orientation: portrait, landscape
+  - [x] Pattern color: default light gray
+  - [x] Pattern: dots only (for now)
+  - [x] Dot width: default 1mm
+  - [x] Dot spacing: default 5mm
+  - [x] Page padding: default 5mm
+  - [x] Include Print button in configuration panel
   - [ ] Print action generates PDF from current settings
 
-- [ ] Define page layout and responsiveness
-  - [ ] Two-panel desktop layout: left preview, right form
-  - [ ] Mobile stacked layout with usable controls and readable preview
+- [x] Define page layout and responsiveness
+  - [x] Two-panel desktop layout: left preview, right form
+  - [x] Mobile stacked layout with usable controls and readable preview
 
 - [ ] Define sizing/scaling rules
   - [ ] Keep correct page proportions for A4/A3 + orientation
