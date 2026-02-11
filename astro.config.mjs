@@ -1,10 +1,10 @@
 // @ts-check
-import { defineConfig } from "astro/config";
-import react from "@astrojs/react";
+import { defineConfig } from 'astro/config';
+import react from '@astrojs/react';
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://dector.github.io",
-  base: "/p/paper-toolkit",
-  integrations: [react()],
+	site: 'https://dector.github.io',
+	base: '/paper-toolkit',
+	integrations: [react()]
 });
