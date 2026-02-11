@@ -1,43 +1,75 @@
-# Astro Starter Kit: Minimal
+# Paper Toolkit
 
-```sh
-bun create astro@latest -- --template minimal
+Paper Toolkit is an Astro + React app for generating printable paper pattern PDFs.
+It provides a live preview and in-browser PDF generation so the rendered pattern
+matches physical dimensions when printed.
+
+## Features
+
+- Live paper preview with responsive layout (desktop split view, stacked on mobile)
+- Configurable paper settings:
+  - Paper size (`A4`, `A3`)
+  - Orientation (`portrait`, `landscape`)
+  - Pattern color
+  - Dot width (mm)
+  - Dot spacing (mm)
+  - Page padding (mm)
+- Client-side PDF generation with millimeter units for print fidelity
+- Print flow with popup/print fallback to direct PDF download
+- Reducer-driven form and preview synchronization
+
+## Tech Stack
+
+- Astro 5
+- React 19 (Astro island)
+- TypeScript (strict config)
+- jsPDF for PDF creation
+- Bun for package management and scripts
+
+## Getting Started
+
+Run all commands from the repository root.
+
+```bash
+bun install
+bun run dev
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+Then open `http://localhost:4321`.
 
-## 🚀 Project Structure
+## Scripts
 
-Inside of your Astro project, you'll see the following folders and files:
+```bash
+bun run dev      # Start dev server
+bun run build    # Build production output to dist/
+bun run preview  # Preview production build locally
+bun run astro    # Run Astro CLI commands
+```
+
+Primary verification command:
+
+```bash
+bun run build
+```
+
+## Project Structure
 
 ```text
-/
+.
 ├── public/
 ├── src/
+│   ├── components/
+│   │   ├── PaperConfigurator.tsx
+│   │   └── PaperConfigurator.css
 │   └── pages/
 │       └── index.astro
+├── docs/
+│   └── verification/
 └── package.json
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+## Notes
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
-
-Any static assets, like images, can be placed in the `public/` directory.
-
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `bun install`             | Installs dependencies                            |
-| `bun dev`             | Starts local dev server at `localhost:4321`      |
-| `bun build`           | Build your production site to `./dist/`          |
-| `bun preview`         | Preview your build locally, before deploying     |
-| `bun astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `bun astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+- Main route: `src/pages/index.astro`
+- Main interactive module: `src/components/PaperConfigurator.tsx`
+- Generated build output: `dist/`
