@@ -1,0 +1,53 @@
+# TODO
+
+## Project Description
+
+This project is a simple React-based paper pattern configurator page embedded in the Astro app. The UI has two areas: a live paper preview on the left and a configuration form on the right. Users can choose paper size and orientation, adjust dot pattern appearance, and immediately see changes reflected in the preview. The configuration also includes a Print action that generates a PDF using the selected paper settings.
+
+## Paper Pattern Page Plan
+
+- [ ] Finalize functional scope and defaults
+  - [ ] Paper size: A4, A3
+  - [ ] Orientation: portrait, landscape
+  - [ ] Pattern color: default light gray
+  - [ ] Pattern: dots only (for now)
+  - [ ] Dot width: default 1mm
+  - [ ] Dot spacing: default 5mm
+  - [ ] Page padding: default 5mm
+  - [ ] Include Print button in configuration panel
+  - [ ] Print action generates PDF from current settings
+
+- [ ] Define page layout and responsiveness
+  - [ ] Two-panel desktop layout: left preview, right form
+  - [ ] Mobile stacked layout with usable controls and readable preview
+
+- [ ] Define sizing/scaling rules
+  - [ ] Keep correct page proportions for A4/A3 + orientation
+  - [ ] Map mm-based settings to on-screen preview consistently
+  - [ ] Set valid ranges/minimums for numeric controls
+
+- [ ] Define preview rendering behavior
+  - [ ] Render dot pattern inside printable area (respect padding)
+  - [ ] Apply color, width, spacing changes immediately
+  - [ ] No manual apply action; preview auto-updates on each change
+
+- [ ] Define form behavior and validation
+  - [ ] Control types per setting (choice/color/numeric)
+  - [ ] Validation and fallback behavior for invalid input
+  - [ ] Optional reset-to-defaults behavior
+
+- [ ] Define React integration plan
+  - [ ] Single source of truth for settings state
+  - [ ] Synchronized updates between form controls and preview
+
+- [ ] Define PDF generation and print flow
+  - [ ] Generate PDF with selected paper size and orientation
+  - [ ] Apply current dot pattern, spacing, width, color, and padding in PDF output
+  - [ ] Trigger browser print/download flow from generated PDF
+  - [ ] Define fallback/error behavior if PDF generation fails
+
+- [ ] Verification and handoff
+  - [ ] Check all requirements against acceptance criteria
+  - [ ] Manual QA scenarios (size/orientation toggles, edge numeric values)
+  - [ ] Manual QA scenarios for Print/PDF output correctness
+  - [ ] Prepare implementation handoff notes
