@@ -1,6 +1,6 @@
 # Paper Toolkit
 
-![Vibecode Meter](https://img.shields.io/badge/Vibecode%20Meter-6%2F10-f59e0b?style=for-the-badge)
+[![6/6 Pure Vibes | Vibescale](https://vibescale.github.io/badge-bar/6.svg)](https://vibescale.github.io/#6)
 
 <p align="center">
   <img src="docs/images/paper-toolkit-screenshot.webp" alt="Paper Toolkit app screenshot" />
