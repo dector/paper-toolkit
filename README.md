@@ -1,7 +1,5 @@
 # Paper Toolkit
 
-[![6/6 Pure Vibes | Vibescale](https://vibescale.github.io/badge-bar/6.svg)](https://vibescale.github.io/#6)
-
 <p align="center">
   <img src="docs/images/paper-toolkit-screenshot.webp" alt="Paper Toolkit app screenshot" />
 </p>
@@ -9,6 +7,12 @@
 Paper Toolkit is an Astro + React app for generating printable paper pattern PDFs.
 It provides a live preview and in-browser PDF generation so the rendered pattern
 matches physical dimensions when printed.
+
+<p align="right">
+  <a href="https://vibescale.github.io/#6">
+    <img src="https://vibescale.github.io/badge-bar/6.svg" alt="6/6 Pure Vibes | Vibescale" />
+  </a>
+</p>
 
 ## Features
 
