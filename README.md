@@ -73,3 +73,19 @@ bun run build
 - Main route: `src/pages/index.astro`
 - Main interactive module: `src/components/PaperConfigurator.tsx`
 - Generated build output: `dist/`
+
+## Publishing to `/p/paper-toolkit`
+
+This repository is configured to build with Astro `base: "/p/paper-toolkit"` and deploy
+its `dist/` output into the owner pages repository at:
+
+- Repository: `<owner>/<owner>.github.io`
+- Folder: `p/paper-toolkit`
+
+Workflow: `.github/workflows/deploy-pages.yml`
+
+Required setup:
+
+1. Create a fine-grained personal access token with write access to `<owner>.github.io`.
+2. Save it in this repository as secret `DEPLOY_TOKEN`.
+3. Ensure the target branch in `<owner>.github.io` is `main` (or update `publish_branch`).
