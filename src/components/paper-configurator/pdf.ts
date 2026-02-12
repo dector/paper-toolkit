@@ -1,4 +1,5 @@
 import { defaultSettings, isHexColor, resolveDimensions, type PaperSettings } from './model';
+import { jsPDF } from 'jspdf';
 
 const colorToRgb = (hexColor: string) => {
 	if (!isHexColor(hexColor)) {
@@ -19,7 +20,6 @@ export const createPdfFileName = (settings: Pick<PaperSettings, 'paperSize' | 'o
 };
 
 export const drawDotPatternToPdf = async (settings: PaperSettings): Promise<Blob> => {
-	const { jsPDF } = await import('jspdf');
 	const dimensions = resolveDimensions(settings);
 	const pdf = new jsPDF({
 		orientation: settings.orientation,
