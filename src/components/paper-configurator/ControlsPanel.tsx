@@ -7,6 +7,7 @@ import {
   isPaperSize,
   isPattern,
   pagePaddingConstraints,
+  paperSizeOptions,
   type NumericSettingKey,
   type Orientation,
   type PaperSettings,
@@ -67,9 +68,11 @@ export function ControlsPanel({
               onPaperSizeChange(selectedPaperSize);
             }}
           >
-            <option value="A5">A5</option>
-            <option value="A4">A4</option>
-            <option value="A3">A3</option>
+            {paperSizeOptions.map((paperSizeOption) => (
+              <option key={paperSizeOption} value={paperSizeOption}>
+                {paperSizeOption}
+              </option>
+            ))}
           </select>
         </label>
 

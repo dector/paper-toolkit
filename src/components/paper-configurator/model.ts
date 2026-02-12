@@ -53,11 +53,12 @@ export const dotSpacingConstraints = { min: 1, max: 30, step: 0.1 };
 export const pagePaddingConstraints = { min: 0, step: 0.1 };
 const minimumPrintableEdgeMm = 1;
 export const paperSizeOptions: PaperSize[] = ["A5", "A4", "A3"];
+export const defaultPaperSize: PaperSize = "A4";
 export const orientationOptions: Orientation[] = ["portrait", "landscape"];
 export const patternOptions: Pattern[] = ["dots"];
 
 export const defaultSettings: PaperSettings = {
-  paperSize: "A4",
+  paperSize: defaultPaperSize,
   orientation: "portrait",
   patternColor: "#d3d3d3",
   pattern: "dots",
