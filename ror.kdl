@@ -1,3 +1,7 @@
 task dev {
     cmd "./node_modules/.bin/astro dev"
 }
+
+task astro {
+    cmd "./node_modules/.bin/astro"
+}
