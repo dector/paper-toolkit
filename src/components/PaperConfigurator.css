@@ -1,3 +1,9 @@
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+
 .configurator-page {
 	--page-bg-start: #efede4;
 	--page-bg: #f3f2ec;
@@ -39,7 +45,7 @@
 	--message-error-border: #e4b8b2;
 	color-scheme: light;
 	min-height: 100vh;
-	padding: 1rem;
+	padding: 0;
 	background: linear-gradient(
 		180deg,
 		var(--page-bg-start) 0%,
@@ -397,7 +403,7 @@
 
 @media (min-width: 900px) {
 	.configurator-page {
-		padding: 1.5rem;
+		padding: 1rem;
 	}
 
 	.configurator-layout {
@@ -414,7 +420,7 @@
 
 @media (max-width: 520px) {
 	.configurator-page {
-		padding: 0.75rem;
+		padding: 0.5rem;
 	}
 
 	.preview-stage {
