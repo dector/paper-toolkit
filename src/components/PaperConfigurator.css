@@ -166,7 +166,14 @@ body {
 	color: var(--text-muted);
 }
 
-.theme-toggle {
+.configurator-header-actions {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.5rem;
+}
+
+.theme-toggle,
+.github-link {
 	font: inherit;
 	display: inline-flex;
 	align-items: center;
@@ -180,18 +187,22 @@ body {
 	color: var(--text-main);
 	cursor: pointer;
 	transition: background 120ms ease-in-out, border-color 120ms ease-in-out;
+	text-decoration: none;
 }
 
-.theme-toggle-icon {
+.theme-toggle-icon,
+.header-action-icon {
 	width: 1.25rem;
 	height: 1.25rem;
 }
 
-.theme-toggle:hover {
+.theme-toggle:hover,
+.github-link:hover {
 	background: var(--secondary-hover);
 }
 
-.theme-toggle:focus-visible {
+.theme-toggle:focus-visible,
+.github-link:focus-visible {
 	outline: 2px solid var(--focus-ring);
 	outline-offset: 1px;
 }
