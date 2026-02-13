@@ -8,7 +8,7 @@ Guidance for autonomous coding agents working in this repository.
 - Runtime/tooling: Bun (`bun.lock` present).
 - App purpose: paper pattern configurator with live preview and PDF generation.
 - Main route: `src/pages/index.astro` (hydrates the configurator using `client:load`).
-- Main interactive module: `src/components/PaperConfigurator.tsx` and styles in `src/components/PaperConfigurator.css`.
+- Main interactive entrypoint: `src/components/PaperConfigurator.tsx` with feature modules in `src/components/paper-configurator/` and styles in `src/components/PaperConfigurator.css`.
 - Generated output: `dist/`.
 - Verification notes: `docs/verification/milestone-8-verification-handoff.md`.
 
@@ -26,7 +26,7 @@ Implementation details worth preserving:
 - PDF generation is performed in-browser from current settings (size, orientation, color, spacing, width, padding).
 - Dot pattern is rendered in millimeter units in PDF for print fidelity.
 - Print flow attempts to open a PDF tab and invoke print, with download fallback if popup/print is blocked.
-- Form and preview synchronization are reducer-driven in `PaperConfigurator.tsx`.
+- Form and preview synchronization are reducer-driven via `src/components/paper-configurator/model.ts`.
 
 ## Rule Files (Cursor/Copilot)
 

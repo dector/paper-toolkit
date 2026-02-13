@@ -18,7 +18,7 @@ matches physical dimensions when printed.
 
 - Live paper preview with responsive layout (desktop split view, stacked on mobile)
 - Configurable paper settings:
-  - Paper size (`A4`, `A3`)
+  - Paper size (`A5`, `A4`, `A3`)
   - Orientation (`portrait`, `landscape`)
   - Pattern color
   - Dot width (mm)
@@ -70,7 +70,13 @@ bun run build
 ├── src/
 │   ├── components/
 │   │   ├── PaperConfigurator.tsx
-│   │   └── PaperConfigurator.css
+│   │   ├── PaperConfigurator.css
+│   │   └── paper-configurator/
+│   │       ├── ControlsPanel.tsx
+│   │       ├── model.ts
+│   │       ├── NumericField.tsx
+│   │       ├── pdf.ts
+│   │       └── PreviewPanel.tsx
 │   └── pages/
 │       └── index.astro
 ├── docs/
@@ -81,5 +87,6 @@ bun run build
 ## Notes
 
 - Main route: `src/pages/index.astro`
-- Main interactive module: `src/components/PaperConfigurator.tsx`
+- Main interactive entrypoint: `src/components/PaperConfigurator.tsx`
+- Feature modules: `src/components/paper-configurator/`
 - Generated build output: `dist/`
