@@ -108,7 +108,7 @@ bun test --test-name-pattern "renders preview"
 ### Formatting and Naming
 
 - Follow existing local formatting; avoid unrelated reformatting.
-- `.astro` files use tab indentation; keep consistency.
+- Use spaces for indentation; do not use tabs.
 - Use descriptive names (`camelCase` vars/functions, `PascalCase` components).
 
 ### UI / Behavior Expectations
